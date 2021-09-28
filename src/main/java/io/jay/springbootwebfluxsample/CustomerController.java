@@ -1,6 +1,5 @@
 package io.jay.springbootwebfluxsample;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +34,7 @@ public class CustomerController {
         return customerRepository.findById(id);
     }
 
-//    @GetMapping(value = "/customer/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+//        @GetMapping(value = "/customer/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping(value = "/customer/sse")
     public Flux<ServerSentEvent<Customer>> findAllSSE() {
         return sink.asFlux().map(c -> ServerSentEvent.builder(c).build())
@@ -52,11 +51,11 @@ public class CustomerController {
 
     @GetMapping("/flux")
     public Flux<Integer> flux() {
-        return Flux.just(1,2,3,4,5).delayElements(Duration.ofSeconds(1)).log();
+        return Flux.range(1, 5).delayElements(Duration.ofSeconds(1)).log();
     }
 
-    @GetMapping(value = "/fluxstream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    @GetMapping(value = "/fluxstream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Integer> fluxStream() {
-        return Flux.just(1,2,3,4,5).delayElements(Duration.ofSeconds(1)).log();
+        return Flux.range(1, 5).delayElements(Duration.ofSeconds(1)).log();
     }
 }

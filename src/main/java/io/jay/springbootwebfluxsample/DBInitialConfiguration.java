@@ -35,7 +35,14 @@ public class DBInitialConfiguration {
                             new Customer("Chloe", "O'Brian"),
                             new Customer("Kim", "Bauer"),
                             new Customer("David", "Palmer"),
-                            new Customer("Michelle", "Dessler")))
+                            new Customer("Michelle", "Dessler"),
+                            new Customer("Michelle1", "Dessler1"),
+                            new Customer("Michelle2", "Dessler2"),
+                            new Customer("Michelle3", "Dessler3"),
+                            new Customer("Michelle4", "Dessler4"),
+                            new Customer("Michelle5", "Dessler5"),
+                            new Customer("Michelle6", "Dessler6"),
+                            new Customer("Michelle7", "Dessler7")))
                     .blockLast(Duration.ofSeconds(10));
 
             // fetch all customers
